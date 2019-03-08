@@ -44,6 +44,7 @@ if ($confirmationPrograms -eq 'y') {
 }
 
 $confirmationSQL = Read-Host "Proceed to setup SQL with sa password and Mixed mode Auth [y] or [n]:"
+Write-Host "------ After restarting via SQL Server Configuration Manager -- skip this step 2nd time around."
 if ($confirmationSQL -eq 'y') {
 	.\Aceik\setSqlServerAdmin.ps1 SQLEXPRESS $sqlUser $sqlUserPassword
 	.\Aceik\restartSqlServer.ps1 "$env:COMPUTERNAME"
