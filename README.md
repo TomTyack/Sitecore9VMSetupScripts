@@ -18,6 +18,8 @@ git clone https://github.com/TomTyack/Sitecore9VMSetupScripts.git $installToolsF
 
 4) Download your license file to the folder C:\sc9_install\
 
+5) Run the Command in powershell window:  Set-ExecutionPolicy RemoteSigned
+
 5) Choose which VM you want to setup: 
 
 Two Options: 
