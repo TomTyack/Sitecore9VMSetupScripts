@@ -4,7 +4,9 @@ Contains Powershell scripts to setup VMs
 1) Open powershell console and run the following:
 
 $installToolsFolder = "C:\sc9_install\"
+
 New-Item -ItemType directory -Path $installToolsFolder -Force
+
 git clone https://github.com/TomTyack/Sitecore9VMSetupScripts.git $installToolsFolder
 
 2) Download your license file to the folder C:\sc9_install\
