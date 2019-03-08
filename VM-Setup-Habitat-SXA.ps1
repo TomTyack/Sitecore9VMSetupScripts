@@ -50,6 +50,11 @@ if ($confirmationSQL -eq 'y') {
 }
 
 ####### YOU MAY NEED TO MANUALL RESTART YOU SQL SERVER AT THIS POINT #####
+# Open the habitat project and build it in VS first
+$sqlStarted = Read-Host "Please confirm that SQL server is running and the Browser service is running ? [y] or [n]:"
+if ($sqlStarted -eq 'n') {
+	Write-Host "*** SORT OUT THE ISSUE ***"
+}
 
 .\Aceik\installAllModules.ps1 -Azure $false
 .\Aceik\Sitecore9Gallery.ps1
