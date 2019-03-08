@@ -1,5 +1,5 @@
 
-param([String]$solrZipLocation )
+param([String]$solrZipLocation, [String]$sitecoreInstallFolder )
 
 Try
 {
@@ -22,8 +22,9 @@ Write-Host "Begin SOLR install script"
 
 Try
 {
+	cd Aceik
 	#--- Install SOLR ---
-	.\install-solr
+	.\install-solr.ps1 -sitecoreInstallFolder $sitecoreInstallFolder
 }
 Catch
 {
@@ -38,5 +39,7 @@ Catch
 }
 
 Write-Host "Completed SOLR INSTALL"
+
+cd..
 
 

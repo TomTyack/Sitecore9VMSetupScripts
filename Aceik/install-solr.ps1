@@ -1,3 +1,20 @@
+# Credit primarily to jermdavis for the original script
+
+Param(
+    [string]$solrVersion = "7.2.1",
+    [string]$installFolder = "C:\solr",
+    [string]$solrPort = "8983",
+    [string]$solrHost = "localhost",
+    [bool]$solrSSL = $TRUE,
+    [string]$nssmVersion = "2.24",
+	[string]$keystoreSecret = "secret",
+	[string]$KeystoreFile = 'solr-ssl.keystore.jks',
+	[string]$SolrDomain = 'localhost',
+	[string]$sitecoreInstallFolder = 'localhost',
+	[switch]$Clobber
+)
+
+
 # Cleanup previous
 $keystorefile1 = "$sitecoreInstallFolder"+"solr-ssl.keystore"
 if (Test-Path $keystorefile1) 
@@ -11,21 +28,6 @@ if (Test-Path $keystorefile2)
   Remove-Item $keystorefile2
 }
 
-
-# Credit primarily to jermdavis for the original script
-
-Param(
-    [string]$solrVersion = "7.2.1",
-    [string]$installFolder = "C:\solr",
-    [string]$solrPort = "8983",
-    [string]$solrHost = "localhost",
-    [bool]$solrSSL = $TRUE,
-    [string]$nssmVersion = "2.24",
-	[string]$keystoreSecret = "secret",
-	[string]$KeystoreFile = 'solr-ssl.keystore.jks',
-	[string]$SolrDomain = 'localhost',
-	[switch]$Clobber
-)
 
 $solrName = "solr-$solrVersion"
 $solrRoot = "$installFolder\$solrName"

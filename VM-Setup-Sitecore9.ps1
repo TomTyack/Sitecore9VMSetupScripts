@@ -9,7 +9,7 @@ $siteDevNetPassword = "dev.sitecore.net < Password"
 $Secure2 = $siteDevNetPassword | ConvertTo-SecureString -AsPlainText -Force
 
 $solrZipLocation = 'c:\sc9_install\solr-7.2.1.zip'
-$sitecoreWDPXp0Zip = 'c:\sc9_install\Sitecore 9.1.0 rev. 001564 (WDP XP0 packages).zip'
+$sitecoreWDPXp0Zip = 'c:\sc9_install\Sitecore 9.1.0 rev. 001564 (WDP XPSingle packages).zip'
 $sitecoreInstallFolder = 'c:\sc9_install\'
 $SCInstallRoot = "c:\sc9_install"
 $SCInstallRoot = "c:\sc9_install"
@@ -37,7 +37,6 @@ if ($confirmationPrograms -eq 'y') {
 	.\Aceik\windowSettings.ps1
 }
 
-
 $confirmationSQL = Read-Host "Proceed to setup SQL with sa password and Mixed mode Auth [y] or [n]:"
 Write-Host "------ After restarting via SQL Server Configuration Manager -- skip this step 2nd time around."
 if ($confirmationSQL -eq 'y') {
@@ -51,26 +50,32 @@ if ($sqlStarted -eq 'n') {
 	Write-Host "*** SORT OUT THE ISSUE ***"
 }
 
-
+$configureRepos = Read-Host "Proceed to setup SIF Repos and Gallery [y] or [n]:"
+if ($configureRepos -eq 'y') {
 .\Aceik\installAllModules.ps1 -Azure $false
 .\Aceik\Sitecore9Gallery.ps1
-
 Install-Module SqlServer -Repository PSGallery -AllowClobber
+}
 
 $confirmationSOLR = Read-Host "Proceed to setup SOLR [y] or [n]:"
 if ($confirmationSOLR -eq 'y') {
-	.\Aceik\Sitecore9InstallSOLR.ps1 $solrZipLocation 
+	.\Aceik\Sitecore9InstallSOLR.ps1 -solrZipLocation $solrZipLocation -sitecoreInstallFolder $sitecoreInstallFolder
 }
 
-Write-Host "-- Setting DB containement user setting "
-.\Aceik\containedSQL.ps1
-Write-Host "-- Setting DB containement user setting -- DONE"
+$containedSQLGo = Read-Host "Run DB containment Script [y] or [n]:"
+if ($containedSQLGo -eq 'y') {
+	Write-Host "-- Setting DB containement user setting "
+	.\Aceik\containedSQL.ps1
+	Write-Host "-- Setting DB containement user setting -- DONE"
+}
 
-
-Write-Host "-- We need to run the prerequisits script"
-# We need to run the prerequisits script
-.\Aceik\Sitecore9.ps1 $sitecoreWDPXp0Zip $sitecoreInstallFolder
-Write-Host "-- We need to run the prerequisits script -- DONE"
+$runPre = Read-Host "Run prerequisits Script [y] or [n]:"
+if ($runPre -eq 'y') {
+	Write-Host "-- We need to run the prerequisits script"
+	# We need to run the prerequisits script
+	.\Aceik\Sitecore9.ps1 $sitecoreWDPXp0Zip $sitecoreInstallFolder
+	Write-Host "-- We need to run the prerequisits script -- DONE"
+}
 
 # IF you get a GIT not found error run the command:  "start powershell"
 ####### YOU MAY NEED TO Execute start powershell #####
