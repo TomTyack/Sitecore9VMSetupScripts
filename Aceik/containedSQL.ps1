@@ -1,0 +1,1 @@
+Invoke-Sqlcmd -Query "sp_configure 'contained database authentication', 1; RECONFIGURE;   " -ServerInstance "$env:COMPUTERNAME\SQLEXPRESS"
