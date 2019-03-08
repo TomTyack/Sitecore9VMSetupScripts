@@ -8,7 +8,6 @@ $siteDevNetUsername = "myuser@aceik.com.au"
 $siteDevNetPassword = "aapassword"
 $Secure2 = $siteDevNetPassword | ConvertTo-SecureString -AsPlainText -Force
 
-$sitecoreWDPXp0Zip = 'c:\sc9_install\Sitecore 9.1.0 rev. 001564 (WDP XP0 packages).zip'
 $sitecoreInstallFolder = 'c:\sc9_install\'
 $SCInstallRoot = "c:\sc9_install"
 $habitatUtilitiesFolder = "$sitecoreInstallFolder"+"habitatutils"
