@@ -3,6 +3,9 @@ Contains Powershell scripts to setup VMs
 
 1) Open powershell console and run the following:
 
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+choco install -y git
+
 $installToolsFolder = "C:\sc9_install\"
 
 New-Item -ItemType directory -Path $installToolsFolder -Force
