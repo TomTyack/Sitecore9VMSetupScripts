@@ -74,6 +74,7 @@ if ($runPre -eq 'y') {
 	Write-Host "-- We need to run the prerequisits script"
 	# We need to run the prerequisits script
 	.\Aceik\Sitecore9.ps1 $sitecoreWDPXp0Zip $sitecoreInstallFolder
+	Install-Module SqlServer -Repository PSGallery -AllowClobber
 	Write-Host "-- We need to run the prerequisits script -- DONE"
 }
 
