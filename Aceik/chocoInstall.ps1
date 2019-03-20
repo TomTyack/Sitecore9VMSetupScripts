@@ -30,3 +30,13 @@ choco install -y urlrewrite
 choco install -y nssm
 choco install -y scla
 #choco install -y sim
+
+
+
+#under construction
+#based off of https://codealoc.wordpress.com/2013/03/15/installing-iis-with-chocolatey/
+choco install IIS-WebServerRole --source WindowsFeatures
+choco install IIS-ISAPIFilter --source WindowsFeatures
+choco install IIS-ISAPIExtensions --source WindowsFeatures
+choco install IIS-NetFxExtensibility --source WindowsFeatures
+choco install IIS-ASPNET --source WindowsFeatures
